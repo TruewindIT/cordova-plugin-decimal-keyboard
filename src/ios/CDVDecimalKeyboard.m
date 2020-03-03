@@ -48,7 +48,7 @@ BOOL isAppInBackground=NO;
 }
 
 -(void) setDecimalChar {
-    [self evaluateJavaScript:@"DecimalKeyboard.getDecimalChar();"
+    [self evaluateJavaScript:@"DecimalKeyboardMR.getDecimalChar();"
            completionHandler:^(NSString * _Nullable response, NSError * _Nullable error) {
                if (response) {
                    [decimalButton setTitle:response forState:UIControlStateNormal];
@@ -155,7 +155,7 @@ BOOL isDifferentKeyboardShown=NO;
 
 - (void)buttonPressed:(UIButton *)button {
     [decimalButton setBackgroundColor: [UIColor colorWithRed:210/255.0 green:213/255.0 blue:218/255.0 alpha:1.0]];
-    [self evaluateJavaScript:@"DecimalKeyboard.addDecimal();" completionHandler:nil];
+    [self evaluateJavaScript:@"DecimalKeyboardMR.addDecimal();" completionHandler:nil];
 }
 
 - (void)buttonTapped:(UIButton *)button {
@@ -166,12 +166,12 @@ BOOL isDifferentKeyboardShown=NO;
 }
 
 - (void) isTextAndDecimal:(void (^)(BOOL isTextAndDecimal))completionHandler {
-    [self evaluateJavaScript:@"DecimalKeyboard.getActiveElementType();"
+    [self evaluateJavaScript:@"DecimalKeyboardMR.getActiveElementType();"
            completionHandler:^(NSString * _Nullable response, NSError * _Nullable error) {
                BOOL isText = [response isEqual:@"text"];
                
                if (isText) {
-                   [self evaluateJavaScript:@"DecimalKeyboard.isDecimal();"
+                   [self evaluateJavaScript:@"DecimalKeyboardMR.isDecimal();"
                           completionHandler:^(NSString * _Nullable response, NSError * _Nullable error) {
                               BOOL isDecimal = [response isEqual:@"true"] || [response isEqual:@"1"];
                               BOOL isTextAndDecimal = isText && isDecimal;

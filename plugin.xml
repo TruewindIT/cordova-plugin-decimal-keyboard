@@ -11,13 +11,13 @@
     </engines>
 
     <js-module src="www/decimal-keyboard.js" name="decimalKeyboard">
-    	<clobbers target="window.DecimalKeyboard" />
+    	<clobbers target="window.DecimalKeyboardMR" />
     </js-module>
 
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="DecimalKeyboard">
+            <feature name="DecimalKeyboardMR">
                 <param name="ios-package" value="CDVDecimalKeyboard" onload="true" />
             </feature>
         </config-file>
